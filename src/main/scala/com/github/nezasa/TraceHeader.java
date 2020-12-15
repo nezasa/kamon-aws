@@ -118,7 +118,7 @@ public class TraceHeader {
         if (rootTraceId != null) {
             buffer.append(ROOT_PREFIX).append(rootTraceId).append(DELIMITER);
         }
-        if (parentId != null && !parentId.isBlank()) {
+        if (parentId != null && !parentId.isEmpty()) {
             buffer.append(PARENT_PREFIX).append(parentId).append(DELIMITER);
         }
         buffer.append(sampled).append(DELIMITER);
