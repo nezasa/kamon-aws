@@ -4,6 +4,7 @@ import java.nio.ByteBuffer
 import kamon.trace.Identifier
 import kamon.util.HexCodec
 
+import java.util.UUID
 import java.util.concurrent.TimeUnit.MILLISECONDS
 
 class AmazonTraceIdIdentifier extends Identifier.Scheme(
@@ -15,8 +16,8 @@ object AmazonTraceIdIdentifier {
   class Factory extends Identifier.Factory {
     override def generate(): Identifier = {
       val startTime: Long = MILLISECONDS.toSeconds(System.currentTimeMillis)
-      val number: Long = 1
-      traceIDToIdentifier(new TraceID(HexCodec.toLowerHex(startTime),HexCodec.toLowerHex(number)))
+      val uuid: UUID = UUID.randomUUID()
+      traceIDToIdentifier(new TraceID(HexCodec.toLowerHex(startTime).substring(8), HexCodec.toLowerHex(uuid.getMostSignificantBits).substring(8) + HexCodec.toLowerHex(uuid.getLeastSignificantBits)))
     }
 
     override def from(string: String): Identifier = TraceID.fromString(string)

@@ -14,4 +14,9 @@ class AmazonTraceIdIdentifierSpec extends FlatSpec with Matchers {
   it should "roundtrip binary format correctly" in {
     factory.from(factory.from(string).bytes).string should be (string)
   }
+
+  it should "roundtrip generated identifier" in {
+    val generated = factory.generate()
+    factory.from(generated.string) should be (generated)
+  }
 }
