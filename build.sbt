@@ -34,6 +34,7 @@ lazy val root = (project in file("."))
     libraryDependencies += scalaTest % Test,
 
     releasePublishArtifactsAction := PgpKeys.publishSigned.value,
+    releaseCrossBuild := true,
   )
 
 // See https://www.scala-sbt.org/1.x/docs/Using-Sonatype.html for instructions on how to publish to Sonatype.
