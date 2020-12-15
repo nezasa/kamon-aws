@@ -11,7 +11,7 @@ import org.scalatest.{FlatSpec, Matchers}
 import scala.collection.immutable
 
 class AmazonTraceIdSpec extends FlatSpec with Matchers {
-  Kamon.reconfigure(ConfigFactory.parseString("""kamon.trace.identifier-scheme: "com.github.nezasa.TraceIdIdentifier" """).withFallback(ConfigFactory.load()))
+  Kamon.reconfigure(ConfigFactory.parseString("""kamon.trace.identifier-scheme: "com.github.nezasa.AmazonTraceIdIdentifier" """).withFallback(ConfigFactory.load()))
   
   "RequestIdAsTraceId" should "read without headers" in {
     val httpRequest = HttpRequest()

@@ -1,11 +1,8 @@
 package com.github.nezasa
 
-import java.net.URLDecoder
-
 import kamon.Kamon
 import kamon.context.HttpPropagation.HeaderReader
 import kamon.context.{Context, Propagation}
-import kamon.trace.Trace.SamplingDecision
 import kamon.trace.{Identifier, Span, Trace}
 
 /**
